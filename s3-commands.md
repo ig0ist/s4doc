@@ -35,8 +35,29 @@ cat /fs/rwdata/fordlogs/pas_debug.log | grep QML
 
 ```
 
+*Некоторые полезные команды для сбора информации*:
 
 
+```shell
+
+
+# pidin mem
+# pci
+# pidin fd
+# pidin ar
+# hwid
+# use hwid
+# pidin -P qconn mem
+# ldd `which qconn`
+# cpld display off
+# cpld display on
+# cpld status
+# cat /ppsp/services/reconn/vehicle
+# ls -lR /dev/mq/ 
+# use -ir
+# use cpld
+
+```
 
 # LOG
 
