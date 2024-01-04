@@ -1,0 +1,92 @@
+# pidin ar
+     pid Arguments
+       1 procnto-smp-instr -mr~x
+   12290 i2c-ls10xx -b1
+   12292 gpio_resmgr
+   12293 hwinfo_resmgr
+   12294 slogger2 -U 20:20 -g 220,140
+   12295 pipe -U 22:22
+   12296 mq -U 30:30
+   12297 wdtkick
+   12298 fsevmgr -F 1 -N 1 -U 31:31
+   32771 devc-ser8250 -e -t1 -F -S -b921600 -c300000000/16 0x021C0500^0,86 -b921600 -v 0x021C0600^0,86
+   40971 random -t -U 21:21
+   40972 devb-sdmmc-ls10xx cam pnp,user=1:1 blk mntperms=775,mntgid=76,rw,cache=40M,maxio=256,ra=64k:2048k sdio addr=0x01560000,irq=94,clk=300000000,timing=hs200,bw=8,bs=per_clk=1000000000:clk_max=116000000 disk name=emmc blk naming=0#@ blk ramdisk=32m
+   81936 blkfs_resmgr -o fd=/dev/emmc0.lnxdata.boot_fs
+  131086 io-pkt-v6-hc -D -u sockstat,0200:0200,0660 -p sockstat -S -U 27:27 -p tcpip stackguard,stacksize=16384,stackguard,mfib_enable,mfib_gid_map=210_0;210_1;210_2;210_3;210_4;210_5;210_6;210_7;210_8;210_9;210_10;210_11;210_12;210_13;210_14;210_15
+  196623 merklefsmonitor /dev/emmc0.qnx6.system_b
+  253965 imx6x_caam -U 170:170
+  253969 ksh
+  634899 /bin/tokenmanager
+  655382 /bin/imx6x_encryptor -e /dps/keymgr-store -p /dps/keymgr -U key_mgr
+  659477 /bin/keymgr -k /etc/keymgr/config/keyDataInfo.xml -U 170:170,160,501,680,700
+  667675 dumper -d /var/log/dumps -I -w -z 1 -U 23:23 -H 50M
+  774162 /bin/fordslm -vvvv /etc/slm_config.xml -c /data/config/slm -r none -s Category-A
+  782359 fnv2ipcd -e -u fnv2ipc -b / /etc/EcgEv2.conf
+  790557 powerman -e -u powerman -b /
+  806942 named -4 -f -n1 -u vnm
+  843801 serviceManager -b / -u svcmgr
+  843808 nw_util -b / -u vnm -xcli
+  851994 vnm -b / -u vnm -e ECG
+  868380 mosquitto -c /etc/mosquitto/config/mosquitto.conf
+  868383 connectivitymgr -e ECG -a 127.0.0.1
+  868385 fci -b / -u fcid -fs 120 -ff /etc/fci/config
+  872472 fnv2vpsm -e -u fnv2vpsm -b /
+  872482 /bin/spcmvdmd
+  872483 installd -xcli
+  872485 pacmand -xcli
+  872486 launchpad -xcli
+  872487 launcher -xcli
+  872488 fnv2vim
+  872489 almbridge -xcli
+  872490 lightd
+  872491 svc_enclosure
+  909357 /user launchArgs
+  917550 crifd -b / -u crifd
+  925740 thermal -a0x01f00000 -l0x10000 -t5 -p10 -bECG1
+  933924 fdpdaemon
+  933935 sm-sysmgr -U sm,1,94,660,680,700 -p /lib/libsm-resetcause.so -p /lib/libsm-sysif.so -l /lib/libsm-memmonitor.so -l /lib/libsm-cpumonitor.so
+  933936 sm-processlauncher -U sm,680,700
+  933937 sm-crashdetector -U sm,1,94,96,680,700
+  933938 sm-heartbeat
+  933939 DiagnosticsMaster
+  938038 telemetryd
+  938039 ipptserver -b / -u ipptserver
+  938040 /user launchArgs
+  938041 cpmd --nolock
+  946229 ochd
+  946235 vicmd -u vicm -b /
+  946236 swumd
+  946237 /user launchArgs
+  954426 osinstaller -u osinstaller -b /
+  954431 ecgswuagent -e -u swuagent -b /
+  954432 scriptengd -u scripteng -b /
+  954433 /user launchArgs
+  954436 edtd
+  954439 qconn
+  954440 devc-pty -U 28:28
+  954443 parsedd
+  962639 /usr/sbin/syslogd -f /etc/syslog.conf
+  974924 bluezonesvcd -b / -u cbzsvc
+  974925 mymode
+ 1028169 gfd -noexit
+ 1105989 /usr/sbin/sshd
+ 1138755 /user launchArgs
+ 1232966 /user launchArgs
+ 1298494 RCN_AnalyticsAgent
+ 1298498 RCN_DiagnosticsAgent -o /etc/RCN_DiagnosticsAgent/conf/log_config_ecg -p /etc/RCN_DiagnosticsAgent/conf/diagnostics_config_ecg
+ 1302606 /user/image/MU5T-14H131-BMC.50.28.00.749/bin/UcfHost com.ford.ecg.NCP ../lib/libNextCallerPredictionModel.so 255 1
+ 1359946 /user launchArgs
+ 1409076 /user launchArgs
+ 1421395 /user/image/MU5T-14H131-AMC.50.28.00.749/bin/UcfHost com.ford.ecg.NRSP ../lib/libNextRadioStationPredictionModel.so
+ 1450064 /user launchArgs
+ 1458258 /user launchArgs
+ 1474641 fdpstore -p /data/tmp/logs/fdp/fdplog.txt --spcm
+32514068 /usr/sbin/sshd -R
+32522324 -sh
+32714837 /usr/sbin/sshd -R
+32723030 sh -c sh
+32727127 dd if
+32727128 gzip -1 -
+33050713 pidin ar
+#
