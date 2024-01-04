@@ -1,0 +1,154 @@
+# pidin ar
+     pid Arguments
+       1 procnto-smp-instr -ae -F2000 -m~x -P 11s
+       2 random -t -U 9:9
+       3 slogger2 -U 20:20 -g 220,251
+       4 devb-sdmmc-mx8x sdmmc pwroff_notify=long cam resmgr,pnp,cache,quiet,user=400:400 blk memory=sysram\&below4G:sysram,mntperms=775,mntgid=76,ra=64k:2048k,maxio=256,cache=64m disk name=emmc sdio ~ac12,idx=0,bs=emmc:bw=8:sdll=7:dtype=4,verbose=1 disk name=emmc blk naming=0#@
+       6 squashfs -u 429:429,76
+    4101 devb-ram cam user=5:5 ram capacity=1 blk ramdisk=166m,cache=512k
+    4103 pipe -U 8:8
+    4104 dumper -d /fs/storage/rwdata/dumps/tmp -I -w -s 10M -z 1 -U 26:26
+    4105 sc-imx8 -U 412:412
+    4106 hwinfo-resmgr -u 421:500 -d /proc/boot/hwinfo-cfg.so
+    4107 devc-sermx8-dma -U 403:500 -E -F -S -u 3 -b 500000 -c80000000 0x5A080000,259
+    4108 devc-sermx8-dma -U 401:500 -e -F -S -u 1 -b 921600 -c80000000 0x5A060000,257
+    4109 fsevmgr -U fsevmgr -F 400 -N 400 -y
+    8207 login -f root
+   69649 blkfs_resmgr -o fd=/dev/emmc0.lnxdata.boot_fs
+   90130 de-service-resmgr -u 432:432,180,500,507,1002
+  114707 mq -U 10:10
+  147472 -ksh
+  163863 fordslm -i -r none -t 10 -T 5000 -s startup /etc/startup/sync4-modular.xml -c /fs/storage/rwdata/fordslm/system_handled -v
+  192534 /bin/ksh /etc/startup/scripts/slog_log_manager.sh 10 10 1
+  249883 devb-loopback blk cache=8m loopback prefix=loop.var,user=11:11,fd=/fs/storage/rwdata/os/system_handled/fs-var.img
+  253982 i2c-imx8 -v -I0
+  286746 i2c-imx8 -vvv -I10
+  294947 i2c-imx8 -v -I11
+  303138 gpio-resmgr -d /proc/boot/gpio_mapping.so
+  450580 io-pkt-v6-hc -S -ppf-v6 -w2 -q2 -ptcpip enmap=0,stackguard,stacksize=8192,mclbytes=4096,mbuf_cache=32,pkt_typed_mem=below4G,mfib_enable,mfib_gid_map=210_0;210_1;210_2;210_3;210_4;210_5;210_6;210_7;210_8;210_9;210_10;210_11;210_12;210_13;210_14;210_15
+  450589 pps -A /etc/sysconfig/pps_acl -t 5000 -U 13:13
+  471064 NS_SharedMem
+  471072 NS_NPPService
+  471076 drm -c /usr/lib/graphics/drm.conf -P 4 -h /dev/device_cfg/display -t mtouch_if_CS -u 422 -a /dev/drm -p /pps/services/display -f 1 -o 0 &
+  471077 screen -c /usr/lib/graphics/iMX8QM/graphics_ford_imx8qm_4_dashcard.conf -u 82
+  487452 devc-sermx8-dma -U 402:500 -E -l 32 -F -S -u 2 -b 1000000 -c80000000 0x5A070000,258
+  487455 imx8_stop_sleep
+  487462 fnv2ipcd -m -u fnv2ipc -b /bin /etc/Sync4Ev2.conf
+  487463 SS_IPC_Adapter
+  487464 SS_PowerManager
+  487465 mtouch -c /etc/system/config/mtouch_sync4_0.conf
+  495649 windowmanager
+  495658 dev-rvc
+  495659 vpu-decoder-mx8 -U 434:500
+  495660 ANI_QuickAnimationPlayer
+  495661 SS_DECache
+  495662 VS_DiagService -g 507
+  495663 VS_Illumination
+  495664 VS_CANShadow
+  495665 devc-sermx8-dma -U 404:500 -d -E -F -S -u 4 -b 57600 -c80000000 0x5A090000,260
+  495666 mosquitto -c /etc/hmi_mosquitto_debug.conf
+  495667 HmiNotificationService
+  495669 content_shell /menlo/center-stack/index-static.html --dashcard-cs-app --enable-thread-boost --enable-app-foreground-ready --frames-after-foreground-ready=0 --window-zorder=1000 --max-framerate=30 --max-renderer-mem-size=500 --js-flags="--max-old-space-size=500" --data-path=/fs/storage/rwdata/com.ford.mcs/system_handled
+  495670 activitymanager
+  495671 devicehelper /etc/devicehelper.conf
+  495672 menlocs -s /menlo/locale/
+  495673 VS_SVM
+  499772 HMI_AL -n
+  503866 i2c-imx8 -v -I2
+  507965 AudioManufacturingUtilities
+  507968 SS_RVC
+  512063 io-audio -U 417:504,514,517 -c /etc/system/config/io-audio.conf
+  512065 imx6x_caam -U key_mgr
+  512066 tokenmanager
+  512067 imx6x_encryptor -e /fs/dps/keymgr-store -p /fs/dps/keymgr -U key_mgr
+  512068 keymgr -k /etc/keymgr/config/keyDataInfo.xml -U 170:170,160,700,1002
+  512069 installd
+  512070 pacmand
+  512071 launchpad -xcli
+  512072 launcher -xcli
+  512073 almbridge -xcli
+  516170 TextInputService
+  520267 Sirius_DL_Launch_Server -d /dev/ser4 -w /fs/storage/rwdata/sirius/ -m 0xC0000708
+  524364 Sirius_DL_Launch_Client -w /fs/storage/rwdata/sirius/ -m 0xC0001708
+  528461 HMI_ThemeService
+  528462 AudioModeResrcServer
+  528463 devc-sermx8-dma -U 405:500 -E -f -S -u 5 -I 4096 -b 115200 -c80000000 0x5A0A0000,261
+  536661 NET_Bluetooth -c MARVELL -u /dev/ser5 -j
+  577622 NET_BT_ServiceBSDK
+  598099 btiap -i /dev/i2c13
+  606292 pci-server --bus-scan-limit=10 -c
+  606296 btconnmgr
+  618585 NET_EmergencyAssist
+  630871 NET_AAP_Service
+  639067 VS_Clock
+  647260 StolenVehicleService
+  704594 btfilter -f 11 -o /fs/rwdata/fordlogs/bt/btsnoop/btsnoop-filtered.log
+  794705 vnm -b / -u vnm -e SYNC
+  839760 wlan_service -Uwlan_service -Dwpa
+  876596 soagateway --config /etc/soa/gateway/config/config_menlo.json
+  888857 VS_SOAService
+  888922 /fs/storage/alm/user/image/MU5T-14H214-FF.01.00.06.007/opt/garmin/bin/hmi_main
+  888925 connectivitymgr -e SYNC
+  892949 Nuance_Cloud_CM_Proxy /opt/nuance/speech/data/json/proxy_config.json
+  893022 natp -f /etc/natp.cfg -s natp_config
+  921695 io-asr-ford -c /etc/asr.cfg
+  933984 i2c-imx8 -v -I13 -r 2
+  933985 VS_ClusterProxyServer
+  933986 VS_BackupIgnition
+  933988 mm-renderer -r /pps/services/multimedia/renderer -U 22:506 -N 22:506
+  933989 qdb -A -overchk=major -v -Otempstore=/fs/tmpfs -u 14:14,556
+  933990 mdnsd -U 16:7
+  938083 lbs
+  938087 SS_Display
+  950378 mm-sync -c /etc/mm/mm-sync.conf
+  962665 io-usb-otg -c -ddcd-iap2ncm-ut ioport=1,irq=1 -dhcd-ehci-mx28 ioport=0x5B0D0100,irq=299,no_stream,phy=0x5B100000 -dhcd-imx8-xhci ioport=0x5b130000,irq=303
+  970856 usblauncher_otg -S1 -c /etc/usblauncher/rules.lua -M /etc/usblauncher/mcd.mnt -ertlE -vv -s /fs/os/aarch64le/lib/dll/pubs/ -d Apple -d Android
+  970859 das
+  970860 navservice
+  970862 Receiver_FM_DAB_Client
+  970865 MM_BTAudioManager
+  974960 MM_ZPlayerService
+  974962 MM_MediaService
+  974963 MM_ProjectionService -m 0xE0800308
+  974964 MM_GalService -m 0xE0800308
+  974966 sm-sysmgr -U sm,65,386,680 -p /fs/os/aarch64le/lib/libsm-sysif.so -l /fs/os/aarch64le/lib/libsm-memmonitor.so -l /fs/os/aarch64le/lib/libsm-cpumonitor.so -p /fs/os/aarch64le/lib/libsm-resetcause.so
+  979061 MM_DioService -m 0xE0800308
+  979063 CarPlayIAP -m 0xE0800308
+  979064 sm-processlauncher -U sm,680
+  979065 sm-crashdetector -U sm,386,388,680
+  979066 sm-heartbeat
+  979069 osinstaller -u osinstaller -b /
+  979073 /fs/os/chromium/content_shell --launch-as-standby --max-framerate=30
+  991294 cpmd --nolock --max_active_transfers 1
+ 1044603 AppLinkProxy -m 0xD080B308
+ 1048700 AppLinkService -m 0xD080B308
+ 1052781 SmartDeviceLink
+ 1056895 Sirius_Audio_Service -d /dev/ser4 -w /fs/storage/rwdata/sirius/ -m 0xC0010708
+ 1056896 SiriusDbService -w /fs/storage/rwdata/sirius/ -m 0xC0010708
+ 1056901 syncswuagent -u swuagent -b /
+ 1077374 ccsmd
+ 1085571 RCN_ReconnService
+ 1417230 slog2info -w
+ 1671300 /usr/sbin/wpa_supplicant-2.5 -imrvl_mlan0 -Dqwdi -c/etc/wlan/wpa_supplicant-2.5.conf -C/tmp/wpa_supplicant -g/tmp/wpa_supplicant-global -P/var/run/wpa_supplicant.pid -t -B
+ 1679419 fdpdaemon
+ 1679494 telemetryd
+ 1679498 devc-pty -U31:31
+ 1687689 qconn
+ 1687692 edtd
+ 1695879 Receiver_TMC_Client
+ 1720466 sshd -r
+ 1724552 SS_USBDiagDriver -U 273:273
+ 1736854 SS_System_Diag_Service
+ 1855633 NS_DiagSnapshot
+ 2027659 fdpstore -p /fs/storage/rwdata/logs/fdplog.np.txt -s 4194304 -k 24 --did --token np
+ 2031757 fdpstore -p /fs/storage/rwdata/logs/fdplog.lp.txt -s 104857 -k 4 --did --token lp
+ 2035854 fdpstore -p /fs/storage/rwdata/logs/fdplog.vn.txt -s 629145 -k 4 --did --token vn
+ 2089071 RCN_DiagnosticsAgent -p /etc/diagnostics/conf/diagnostics_config_sync
+ 2089103 bmetricsserver
+ 2089107 serial_log_retriever
+ 2097296 dvfsmgr-imx8x -v -c /etc/dvfs/config/imx8/dvfs_imx8qm.conf -o /etc/dvfs/config/imx8/dvfs_pwrtbl_imx8qm.conf
+ 2097300 temp_mon -v -t 105
+26386581 sshd -r
+26390679 -ksh
+26562690 sleep 60
+26583192 pidin ar
